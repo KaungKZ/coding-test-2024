@@ -10,7 +10,7 @@ export default function ItemCard(props) {
   return (
     <div className="itemcard">
       <div className="itemcard__banner h-[135px] w-full relative">
-        {/* <img src={value.img} alt="item" /> */}
+        {/* <img src={value.image} alt="item" /> */}
         <Image
           src={value.image}
           alt="Picture of the author"
