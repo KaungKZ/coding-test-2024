@@ -1,14 +1,21 @@
-/* eslint-disable */
-
 import { Modal } from "@mantine/core";
 
-export default function CreateModal({ opened, open, close, children }) {
+export default function CreateModal({
+  opened,
+  open,
+  close,
+  withCloseButton = true,
+  closeOnClickOutside = true,
+  children,
+}) {
   return (
     <>
       <Modal
         opened={opened}
         onClose={close}
         centered
+        withCloseButton={withCloseButton}
+        closeOnClickOutside={closeOnClickOutside}
         overlayProps={{
           backgroundOpacity: 0.55,
           blur: 3,

@@ -1,7 +1,5 @@
 import React from "react";
 
-import Link from "next/link";
-import Image from "next/image";
 import Addtocart from "./Addtocart";
 
 export default function ItemCard(props) {
@@ -16,15 +14,6 @@ export default function ItemCard(props) {
           style={{ objectFit: "contain" }}
           className="w-full h-auto p-2"
         />
-        {/* <Image
-          src={value.image}
-          alt="Picture of the author"
-          
-          width="0"
-          height="0"
-          sizes="100vw"
-          
-        /> */}
       </div>
       <div className="itemcard__content">
         <div className="itemcard__title">
@@ -37,10 +26,6 @@ export default function ItemCard(props) {
             ) : (
               value.description
             )}
-
-            {/* <Link href={`/item/${value.id}`} className="itemcard__seemore">
-              See More
-            </Link> */}
           </p>
         </div>
         <div className="itemcard__options">

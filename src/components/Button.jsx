@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import React, { memo } from "react";
 
 function Button({ onClick, cls, text, disabled, loading, type }) {

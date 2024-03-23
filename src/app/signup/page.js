@@ -1,9 +1,8 @@
 "use client";
-// import { signIn } from "next-auth/react";
-// import { useRouter } from "next/navigation";
+
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-// import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+
 import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "../firebase/config";
 
@@ -16,9 +15,10 @@ export default function SignUp() {
   const handleSignUp = async () => {
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
-
       setEmail("");
       setPassword("");
+
+      // sign out function to make sure user will have to sign in again
 
       signOut(auth)
         .then((res) => {
@@ -73,14 +73,6 @@ export default function SignUp() {
                   >
                     Password
                   </label>
-                  {/* <div className="text-sm">
-                  <div
-                    onClick={() => router.push("/forgot-password")}
-                    className="cursor-pointer font-semibold text-indigo-400 hover:text-indigo-300"
-                  >
-                    Forgot password?
-                  </div>
-                </div> */}
                 </div>
                 <div className="mt-2">
                   <input
@@ -98,7 +90,6 @@ export default function SignUp() {
               <div>
                 <button
                   onClick={handleSignUp}
-                  // disabled={!email || !password}
                   className="disabled:opacity-40 flex w-full justify-center rounded-md bg-[#33a0ff] text-white px-3 py-1.5 text-sm font-semibold leading-6  shadow-sm hover:bg-[#33a0ff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#33a0ff"
                 >
                   Sign up

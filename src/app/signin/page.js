@@ -1,10 +1,8 @@
 "use client";
-// import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Cookies from "js-cookie";
 
-// import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 import { auth } from "../firebase/config";
@@ -20,8 +18,7 @@ export default function Signin() {
       const res = await signInWithEmailAndPassword(auth, email, password);
       Cookies.set("userToken", res.user.accessToken);
       Cookies.set("user", res.user.email);
-      // sessionStorage.setItem("userToken", res.user.accessToken);
-      // sessionStorage.setItem("user", res.user.email);
+
       setEmail("");
       setPassword("");
       router.push("/");
@@ -70,14 +67,6 @@ export default function Signin() {
                   >
                     Password
                   </label>
-                  {/* <div className="text-sm">
-                  <div
-                    onClick={() => router.push("/forgot-password")}
-                    className="cursor-pointer font-semibold text-indigo-400 hover:text-indigo-300"
-                  >
-                    Forgot password?
-                  </div>
-                </div> */}
                 </div>
                 <div className="mt-2">
                   <input
@@ -95,7 +84,6 @@ export default function Signin() {
               <div>
                 <button
                   onClick={handleSignUp}
-                  // disabled={!email || !password}
                   className="disabled:opacity-40 flex w-full justify-center rounded-md bg-[#33a0ff] px-3 py-1.5 text-sm text-white font-semibold leading-6  shadow-sm hover:bg-[#33a0ff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#33a0ff"
                 >
                   Sign in
@@ -105,7 +93,7 @@ export default function Signin() {
                     {error.includes("(auth/invalid-email)")
                       ? "Invalid email"
                       : error.includes("(auth/invalid-credential)")
-                      ? "Your email or password is incorrect, please try again"
+                      ? "Incorrect email or password"
                       : ""}
                   </span>
                 ) : (

@@ -22,10 +22,6 @@ export default function Navbar() {
   function handleSignout() {
     signOut(auth)
       .then((res) => {
-        // sessionStorage.removeItem
-        // sessionStorage.removeItem("userToken");
-        // sessionStorage.removeItem("user");
-
         Cookies.remove("userToken");
         Cookies.remove("user");
         // Sign-out successful.
