@@ -10,16 +10,21 @@ export default function ItemCard(props) {
   return (
     <div className="itemcard">
       <div className="itemcard__banner h-[135px] w-full relative">
-        {/* <img src={value.image} alt="item" /> */}
-        <Image
+        <img
+          src={value.image}
+          alt="Item placeholder"
+          style={{ objectFit: "contain" }}
+          className="w-full h-auto p-2"
+        />
+        {/* <Image
           src={value.image}
           alt="Picture of the author"
-          style={{ objectFit: "contain" }}
+          
           width="0"
           height="0"
           sizes="100vw"
-          className="w-full h-auto p-2"
-        />
+          
+        /> */}
       </div>
       <div className="itemcard__content">
         <div className="itemcard__title">
