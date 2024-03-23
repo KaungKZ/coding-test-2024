@@ -1,0 +1,90 @@
+.fixed-width-nav {
+  max-width: 1200px;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.fixed-width-md {
+  max-width: 1164px;
+  width: 1164px;
+  margin: 0 auto;
+}
+
+.primary-rounded-btn {
+  border: none;
+  border-radius: 15px;
+  padding: 5px 15px;
+  background: $blue-400;
+  cursor: pointer;
+  font-size: $text-sm;
+  color: $white-color;
+  transition: background 300ms ease, padding 300ms ease;
+  &:hover {
+    background: $blue-500;
+  }
+}
+
+.primary-rounded-outline-btn {
+  border: 1px solid $blue-500;
+  background: none;
+  font-size: $text-md;
+  border-radius: 25px;
+  padding: 7px 15px;
+  width: 150px;
+  cursor: pointer;
+  transition: all 300ms ease;
+  &:hover {
+    background: $blue-500;
+    color: $white-color;
+  }
+}
+
+.primary-btn {
+  border: none;
+  background: $blue-400;
+  color: $white-color;
+  border-radius: 5px;
+  font-size: $text-base;
+  width: 250px;
+  line-height: 31px;
+  padding: 5px 15px;
+  cursor: pointer;
+  transition: background 300ms ease;
+
+  &:hover {
+    background: $blue-500;
+  }
+}
+
+@mixin section-title {
+  h2 {
+    font-size: $text-3xl;
+    color: $black-color;
+  }
+}
+
+@media (max-width: 1280px) {
+  .fixed-width-nav,
+  .fixed-width-md {
+    width: 85%;
+    max-width: 85%;
+  }
+}
+
+@media (max-width: 600px) {
+  .fixed-width-nav {
+    width: 75%;
+    max-width: 75%;
+  }
+  .fixed-width-md {
+    width: 90%;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 470px) {
+  .fixed-width-md {
+    width: 93%;
+    max-width: 93%;
+  }
+}
