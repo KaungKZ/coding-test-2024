@@ -5,6 +5,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useAppContext } from "@/context";
 import Image from "next/image";
 import Link from "next/link";
+import Cookies from "js-cookie";
+
 import { auth } from "@/app/firebase/config";
 import { signOut } from "firebase/auth";
 
@@ -21,8 +23,11 @@ export default function Navbar() {
     signOut(auth)
       .then((res) => {
         // sessionStorage.removeItem
-        sessionStorage.removeItem("userToken");
-        sessionStorage.removeItem("user");
+        // sessionStorage.removeItem("userToken");
+        // sessionStorage.removeItem("user");
+
+        Cookies.remove("userToken");
+        Cookies.remove("user");
         // Sign-out successful.
       })
       .catch((error) => {

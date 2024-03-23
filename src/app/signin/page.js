@@ -2,6 +2,7 @@
 // import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Cookies from "js-cookie";
 
 // import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -17,9 +18,10 @@ export default function Signin() {
   const handleSignUp = async () => {
     try {
       const res = await signInWithEmailAndPassword(auth, email, password);
-
-      sessionStorage.setItem("userToken", res.user.accessToken);
-      sessionStorage.setItem("user", res.user.email);
+      Cookies.set("userToken", res.user.accessToken);
+      Cookies.set("user", res.user.email);
+      // sessionStorage.setItem("userToken", res.user.accessToken);
+      // sessionStorage.setItem("user", res.user.email);
       setEmail("");
       setPassword("");
       router.push("/");

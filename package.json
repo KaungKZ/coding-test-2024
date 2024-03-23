@@ -16,6 +16,7 @@
     "@mantine/modals": "^7.6.2",
     "dayjs": "^1.11.10",
     "firebase": "^10.9.0",
+    "js-cookie": "^3.0.5",
     "next": "14.1.4",
     "next-auth": "^4.24.7",
     "react": "^18",

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 import Link from "next/link";
 import { useAppContext } from "@/context";
@@ -7,6 +8,7 @@ import Button from "@/components/Button";
 import CreateModal from "./CreateModal";
 import NumberInput from "./NumberInput";
 import { useRouter } from "next/navigation";
+import { auth } from "@/app/firebase/config";
 
 export default function CartPage() {
   const [opened, { open, close }] = useDisclosure(false);
@@ -15,6 +17,7 @@ export default function CartPage() {
   const [isChecked, setIsChecked] = useState({});
   const [isCheckout, setIsCheckout] = useState(false);
   const router = useRouter();
+  const [user] = useAuthState(auth);
 
   function handleRemoveItems() {
     // get truthy values in checked array
@@ -28,9 +31,13 @@ export default function CartPage() {
   }
 
   function handleCheckout() {
-    router.push("/checkout");
-    setIsChecked({});
-    setIsCheckout(true);
+    if (user) {
+      router.push("/checkout");
+      setIsChecked({});
+      setIsCheckout(true);
+    } else {
+      router.push("/signin");
+    }
   }
 
   function handleDeleteItems() {

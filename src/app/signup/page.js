@@ -1,24 +1,36 @@
 "use client";
 // import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { useState } from "react";
-
+import { useRouter } from "next/navigation";
 // import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "../firebase/config";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
+  const [error, setError] = useState("");
 
   const handleSignUp = async () => {
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
-      sessionStorage.setItem("user", true);
+
       setEmail("");
       setPassword("");
+
+      signOut(auth)
+        .then((res) => {
+          // Sign-out successful.
+          router.push("/signin");
+        })
+        .catch((error) => {
+          // An error happened.
+        });
     } catch (e) {
-      console.error(e);
+      console.log(e.message);
+      setError(e.message);
     }
   };
   return (
@@ -91,6 +103,17 @@ export default function SignUp() {
                 >
                   Sign up
                 </button>
+                {error ? (
+                  <span className="w-full mt-2 block text-center text-[#f44336] text-sm">
+                    {error.includes("(auth/invalid-email)")
+                      ? "Invalid email"
+                      : error.includes("(auth/email-already-in-use)")
+                      ? "Your email is already used, please use another email"
+                      : ""}
+                  </span>
+                ) : (
+                  <div className="h-[28px]"></div>
+                )}
               </div>
             </div>
           </div>

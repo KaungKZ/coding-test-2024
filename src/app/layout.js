@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <>
       <html lang="en">
-        <body className={poppins.className} suppressHydrationWarning={false}>
+        <body className={poppins.className} suppressHydrationWarning={true}>
           <MantineProvider>
             <AppWrapper>
               <Navbar />
